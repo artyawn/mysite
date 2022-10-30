@@ -23,7 +23,7 @@ class User extends Authenticatable
     }
 
     public function groups(){
-        return $this->belongsToMany(Group::class, 'group_user','user_id','group_id');
+        return $this->belongsToMany(Group::class, 'group_users','user_id','group_id');
     }
     /**
      * The attributes that are mass assignable.

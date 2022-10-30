@@ -1,31 +1,53 @@
 @extends('layouts.main')
 @section('content')
 <div class="row">
+    <a href="{{route('group.index')}}" class="link-dark ">
+        Закончить редактирование
+    </a><br>
+<div class="col-6">
+    <div class="row">
+        <div class="col-10">
+    <form action="{{route('group.updateTitle',$group->id)}}" method="post">
+        @csrf
+        @method('patch')
+        <input type="text" class="form-control" name="title"
+               id="title" placeholder="Введите название группы" value={{$group->title}}>
+        @error('title')
+        <div class="small text-danger pt-1">{{$message}}</div>
+        @enderror
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" type="submit">Изменить</button><br>
+        </div>
+    </form>
+    </div>
 
+
+    <div class="row">
+        <div class="col-10">
+    <form action="{{route('add.worker',$group->id)}}"method="post">
+        @csrf
+        @method('post')
+        <input type="text" class="form-control mt-3" name="worker"
+               id="mate" placeholder="Введите имя участника которого хотите добавить">
+        @error('worker')
+        <div class="small text-danger pt-1">{{$message}}</div>
+        @enderror
+        </div>
+
+    <div class="col-2">
+        <button class="btn btn-primary  mt-3" type="submit">Добавить</button><br>
+    </div><br>
+    </form>
+    </div>
 
     <form action="{{route('group.delete',$group->id)}}" method="post">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-danger">удалить</button>
+        <button type="submit" class="btn btn-danger mt-3">удалить группу</button>
     </form>
 
     <br>
-
-
-<div class="col-6">
-    <form action="{{route('group.update',$group->id)}}"method="post">
-        @csrf
-        @method('patch')
-        <input type="text" class="form-control" name="title"
-               id="title" placeholder="Введите название группы" value={{$group->title}}><br>
-        <input type="text" class="form-control" name="worker"
-               id="mate" placeholder="Введите имя участника которого хотите добавить"><br>
-        <button class="btn btn-primary" type="submit">Добавить</button><br>
-
-    </form>
-    @if (isset($msg))
-    <h7>{{$msg}}</h7>
-        @endif
 </div>
 
 

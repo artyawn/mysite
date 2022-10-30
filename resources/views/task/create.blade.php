@@ -14,15 +14,18 @@
             <div class="small text-danger pt-1">{{ $message }}</div>
             @enderror
             <br>
-            <select name="group">
+
+            <h6>Группа</h6>
+            <select name="group_id">
                 <option  value="{{$group->id}}" name="value" >{{$group->title}}</option></select><br>
-            <select name="worker">
+            <h6>Выберете работника</h6>
+            <select name="worker_id">
                 <option value="" name="value">Все</option>
                 @foreach($workers as $worker)
-                    <option value="{{$worker->id}}" name="value">{{$worker->name}}</option>
+                    <option value="{{$worker->id}}" name="value" >{{$worker->name}}</option>
                 @endforeach
             </select><br>
-            <input type="date" class="form-control" name="date" value="{{ old('date') }}"
+            <input type="date" class="form-control mt-3" name="date" value="{{ old('date') }}"
                    placeholder="Введите дату исполнения">
             @error('date')
             <div class="small text-danger pt-1">{{ $message }}</div>

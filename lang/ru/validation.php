@@ -116,6 +116,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password'=>"Пароль",
+        'name'=>'Имя',
+        'title'=>'Заголовок',
+        'date'=>'Дата',
+        'content'=>'Описание',
+    ],
 
 ];

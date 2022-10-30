@@ -12,7 +12,7 @@ class Group extends Model
     protected $table='groups';
 
     public function tasks(){
-        $this->hasMany(Task::class,'group_id','id');
+       return $this->hasMany(Task::class,'group_id','id');
     }
 
     public function users(){

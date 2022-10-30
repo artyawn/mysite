@@ -72,12 +72,13 @@
                     </div>
                 </div>
             @endforeach
-        </div>
 
+        </div>
 
 
     <div class="col-6">
                 <h5>Контроль</h5>
+        @if(isset($tasks_right))
                 @foreach($tasks_right as $task)
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
@@ -106,6 +107,7 @@
                         </div>
                     </div>
         @endforeach
+        @endif
             </div>
     </div>
 @endsection

@@ -12,6 +12,10 @@ use App\Service\Group\Service;
 class GroupController extends Controller
 {
 
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index(Service $service)
     {
         return view('group.index',$service->index());
@@ -34,8 +38,6 @@ class GroupController extends Controller
     {
         $data = $request->validate(['title' => 'required|string|max:100']);
         return $service->store($data);
-
-
     }
 
     public function show(Group $group)
@@ -71,9 +73,16 @@ class GroupController extends Controller
     public function deleteWorker(Group $group,User $user)
     {
         $group->users()->detach($user->id);
+
         return redirect(route('group.edit',compact('group')));
     }
 
+
+    public function deleteTask(Group $group, Task $task){
+        $task->delete();
+        return redirect()->route('group.show',$group);
+
+}
 
     public function destroy(Group $group)
     {

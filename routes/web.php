@@ -25,9 +25,7 @@ Route::get('/register',[AuthRegController::class, 'reg'])->name('register');
 Route::post('/register',[AuthRegController::class, 'store'])->name('user.store');
 
 
-
-
-Route::get('/tasks',[TaskController::class, 'index'])->middleware('auth')->name('task.index');
+Route::get('/tasks',[TaskController::class, 'index'])->name('task.index');
 Route::get('/tasks/create/{group}',[TaskController::class, 'create'])->name('task.create');
 Route::get('/tasks/createOwn/',[TaskController::class, 'createOwn'])->name('task.createOwn');
 Route::post('/tasks',[TaskController::class, 'store'])->name('task.store');
@@ -39,7 +37,7 @@ Route::post('/tasks/custom',[TaskController::class, 'custom'])->name('task.custo
 Route::patch('/tasks/{task}/editStatus',[TaskController::class, 'editStatus'])->name('task.editStatus');
 
 
-Route::get('/groups',[GroupController::class, 'index'])->middleware('auth')->name('group.index');
+Route::get('/groups',[GroupController::class, 'index'])->name('group.index');
 Route::get('/groups/create',[GroupController::class, 'create'])->name('group.create');
 Route::get('/groups/{group}/edit',[GroupController::class, 'edit'])->name('group.edit');
 Route::get('/groups/{group}',[GroupController::class, 'show'])->name('group.show');
@@ -49,4 +47,4 @@ Route::get('/groups/custom/{group}',[GroupController::class, 'custom'])->name('g
 Route::post('/groups',[GroupController::class, 'store'])->name('group.store');
 Route::delete('/groups/{group}',[GroupController::class,'destroy'])->name('group.delete');
 Route::delete('/groups/{group}/edit/{user}',[GroupController::class, 'deleteWorker'])->name('delete.worker');
-
+Route::delete('/groups/{group}/{task}',[GroupController::class, 'deleteTask'])->name('group.task.delete');

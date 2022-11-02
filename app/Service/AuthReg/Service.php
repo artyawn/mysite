@@ -12,26 +12,32 @@ class Service
 {
     public function store($data)
     {
+        $email=null;
+        $name=null;
         if (User::where('name', $data['name'])->exists()) {
-            return redirect(route('register'))->withErrors([
-                'name' => 'Пользователь с таким именем существует'
-            ]);
+            $name = 'Пользователь с таким именем уже существует';
         }
 
         if (User::where('email', $data['email'])->exists()) {
-            return redirect(route('register'))->withErrors([
-                'email' => 'Пользователь с такой почтой существует'
-            ]);
+            $email = 'Пользователь с такой почтой существует';
         }
-        $user = User::create([
+        if (isset($name) || isset($email)) {
+            return redirect(route('register',$data))->withErrors([
+                'email' => $email,
+                'name' => $name]);
+        } else {
+            $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-            ]
-        );
-        if ($user) {
-            Auth::login($user);
-            return redirect(route('task.index'));
+            ]);
+            if ($user) {
+                Auth::login($user);
+                return redirect(route('task.index'));
+            } else {
+                return redirect(route('register'))->withErrors([
+                    'data' => 'Произошла ошибка при регистрации пользователя']);
+            }
         }
     }
 

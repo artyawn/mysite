@@ -7,36 +7,30 @@ namespace App\Service\Task;
 use App\Models\Group;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
+use mysql_xdevapi\Collection;
 
 class Service
 {
-    protected $user;
-    protected $task_models_right;
-    protected $task_models_left;
-    protected $group_models;
+    private $user;
+    private $task_models_right;
+    private $task_models_left;
+    private $group_models;
 
 
     public function __construct()
     {
         $this->user = Auth::user();
-        $this->task_models_right = $this->user->tasksSender;
-        $this->task_models_left = $this->user->tasksWorker;
+        $this->task_models_left = $this->user->tasksWorker->where('is_done',0);
+        $this->task_models_right = $this->user->tasksSender->where('worker_id','!=',$this->user->id);
         $this->group_models = $this->user->groups;
     }
 
     public function index()
     {
-       foreach ($this->task_models_right as $task){
-           if($task->worker_id==$this->user->id){
-               continue;
-           }
-               $task_models_right[]=$task;
-
-       }
         $data = [
             'groups' => $this->user->groups,
             'tasks_left' => $this->task_models_left,
-            'tasks_right' => $task_models_right
+            'tasks_right' => $this->task_models_right
         ];
         return $data;
     }

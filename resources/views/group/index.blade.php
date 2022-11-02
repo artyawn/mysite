@@ -3,7 +3,6 @@
     <a href="{{route('group.create')}}" class="link-dark">
         <h6>Новая группа</h6></a>
 <div class="row">
-
     <div class="col-6">
         <h5>Руководитель</h5>
         @foreach($groups_left as $group)

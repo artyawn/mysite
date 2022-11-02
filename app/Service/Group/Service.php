@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class Service
 {
-    protected $group_models_left;
-    protected $group_models_right;
-    protected $user;
+    private $group_models_left;
+    private $group_models_right;
+    private $user;
 
     public function __construct()
     {

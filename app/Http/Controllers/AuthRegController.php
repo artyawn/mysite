@@ -52,10 +52,8 @@ class AuthRegController extends Controller
             return redirect(route('task.index'));
         }
         $data = $request->validated();
-        $service->store($data);
-        return redirect(route('register'))->withErrors([
-            'data' => 'Произошла ошибка при регистрации пользователя'
-        ]);
+        return $service->store($data);
+
     }
 
     public function logout()

@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="text-center">
-
+    <div class=" row justify-content-center">
+      <div class="text-center col-6">
     <main class="form-signin">
         <form action="{{route('signin')}}" method="post">
             @csrf
@@ -31,7 +31,10 @@
                 {{$message}}
             </div>
 @enderror
+      <h6 class="mt-3">Вы еще не зарегистрированы? Перейдите на страницу <a href="{{route('register')}}">регистрации</a> </h6>
     </main>
-  </div>
+
+      </div>
+    </div>
 
 @endsection

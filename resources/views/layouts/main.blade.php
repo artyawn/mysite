@@ -14,6 +14,7 @@
 </head>
 <body>
 <div class="container">
+    @if(\Illuminate\Support\Facades\Auth::check())
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{{route('task.index')}}" class="nav-link px-2 link-dark">Задачи</a></li>
@@ -28,6 +29,7 @@
             <a href="{{route('logout')}}">Выход</a>
         </div>
     </header>
+    @endif
     @yield('content')
 </div>
 

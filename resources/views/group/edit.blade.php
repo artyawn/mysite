@@ -11,7 +11,7 @@
         @csrf
         @method('patch')
         <input type="text" class="form-control" name="title"
-               id="title" placeholder="Введите название группы" value={{$group->title}}>
+               id="title" placeholder="Введите название группы" value="{{$group->title}}">
         @error('title')
         <div class="small text-danger pt-1">{{$message}}</div>
         @enderror

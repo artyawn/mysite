@@ -67,7 +67,7 @@
                             @if(isset($task->group->title))
                             <h6 class="my-0 font-weight-normal mb-4 text-start">Группа:{{$task->group->title}}</h6>
                             @endif
-                            <h6 class="my-0 font-weight-normal mb-4 text-start">Дата:{{$task->date}}</h6>
+                            <h6 class="my-0 font-weight-normal mb-4 text-start">Дата выполнения:{{date("d/m/Y", strtotime($task->date))}}</h6>
                         </ul>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                                 @if(isset($task->group->title))
                                 <h6 class="my-0 font-weight-normal mb-4 text-start">Группа:{{$task->group->title}}</h6>
                                 @endif
-                                <h6 class="my-0 font-weight-normal mb-4 text-start">Дата:{{$task->date}}</h6>
+                                <h6 class="my-0 font-weight-normal mb-4 text-start">Дата выполнения:{{date("d/m/Y", strtotime($task->date))}}</h6>
                             </ul>
                         </div>
                     </div>

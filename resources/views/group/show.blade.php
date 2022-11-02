@@ -35,7 +35,7 @@
                                 <div class="col-9"><h4 class="my-0 font-weight-normal">{{$task->title}}</h4>
                                     <a href="{{route('task.edit',$task->id)}}">Изменить</a></div>
                                 <div class="col-3">
-                                    <form action="{{route('task.delete',$task->id)}}" method="post">
+                                    <form action="{{route('group.task.delete',['group'=>$group->id,'task'=>$task->id])}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">удалить</button>

@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>Редактирование задачи</title>
+@endsection
 @section('content')
     <div class="col-lg-6">
         <form action="{{route('task.update',$task->id)}}" method="post">

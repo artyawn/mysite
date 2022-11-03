@@ -9,4 +9,6 @@ class GroupUser extends Model
 {
     use HasFactory;
     protected $guarded=false;
+
+
 }

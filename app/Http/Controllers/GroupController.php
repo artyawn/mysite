@@ -70,10 +70,9 @@ class GroupController extends Controller
     }
 
 
-    public function deleteWorker(Group $group,User $user)
+    public function deleteWorker( Service $service,Group $group,User $user)
     {
-        $group->users()->detach($user->id);
-
+        $service->deleteWorker($group,$user);
         return redirect(route('group.edit',compact('group')));
     }
 

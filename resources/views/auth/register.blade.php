@@ -1,9 +1,8 @@
 @extends('layouts.main')
-
+@section('title')
+    <title>Регистрация</title>
+@endsection
 @section('content')
-
-
-
     <div class=" row justify-content-center">
         <div class="text-center col-6">
 

@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>Создание группы</title>
+@endsection
 @section('content')
     <div class="row">
     <div class="col-lg-6">

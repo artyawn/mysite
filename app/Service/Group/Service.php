@@ -66,13 +66,20 @@ class Service
 
     public function addWorker($worker, $group)
     {
-
         $user = User::where('name', $worker)->first();
         if (!isset($user)) {
             return redirect(route('group.edit', $group->id))->withErrors([
                 'worker' => 'Пользователя с таким именем нет']);
         }
         $group->users()->attach($user->id);
+    }
+
+    public function deleteWorker($group,$user){
+        $group->users()->detach($user->id);
+        $tasks=Task::all()->where('worker_id',$user->id)->where('group_id',$group->id);
+        foreach ($tasks as $task){
+            $task->delete();
+        }
     }
 
 

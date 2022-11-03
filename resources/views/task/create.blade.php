@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>Новая задача</title>
+@endsection
 @section('content')
     <div class="col-lg-6">
         <form action="{{route('task.store')}}" method="post">

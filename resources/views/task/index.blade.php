@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>Задачи</title>
+@endsection
 @section('content')
     <a href="{{route('task.createOwn')}}" class="link-dark">
     Новая личная задача

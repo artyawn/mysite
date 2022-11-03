@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>{{$group->title}}</title>
+@endsection
 @section('content')
     <div class="row">
     <div class="col-6">

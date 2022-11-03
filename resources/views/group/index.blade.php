@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>Группы</title>
+@endsection
 @section('content')
     <a href="{{route('group.create')}}" class="link-dark">
         <h6>Новая группа</h6></a>

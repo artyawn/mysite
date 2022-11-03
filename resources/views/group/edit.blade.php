@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+    <title>Редактирование группы</title>
+@endsection
 @section('content')
 <div class="row">
     <a href="{{route('group.index')}}" class="link-dark ">

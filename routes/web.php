@@ -18,6 +18,7 @@ use App\Http\Controllers\GroupController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',[TaskController::class,'index']);
 Route::get('/login',[AuthRegController::class,'login'])->name('login');
 Route::post('/login',[AuthRegController::class,'signin'])->name('signin');
 Route::get('/logout',[AuthRegController::class,'logout'])->name('logout');
